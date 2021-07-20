@@ -66,7 +66,7 @@ updateCustomer = (req, res) => {
         });
     }
 
-    CustomerModel.updateById(req.params.customerId, new Customer(req.body), (err, data) => {
+    CustomerModel.updateById(req.params.customerId, new CustomerModel(req.body), (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
@@ -78,7 +78,8 @@ updateCustomer = (req, res) => {
                 });
             }
         } else res.send(data);
-    });
+    }
+    );
 };
 
 // Delete a Customer with the specified customerId in the request

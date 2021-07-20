@@ -59,9 +59,7 @@ Customer.getAll = result => {
 
 // Update Customer 
 Customer.updateById = (id, customer, result) => {
-    sql.query("UPDATE customers SET email=?, name=?, active=? WHERE id=?",
-        [customer.email, customer.name, customer.active, id],
-        (err, res) => {
+    sql.query("UPDATE customers SET email=?, name=?, active=? WHERE id=?",[customer.email, customer.name, customer.active, id],(err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);
@@ -73,7 +71,8 @@ Customer.updateById = (id, customer, result) => {
                 result({ kind: "not_found" }, null);
                 return;
             }
-            console.log("updated customer: ", { id: id, ...customer });
+        console.log("updated customer: ", { id: id, ...customer });
+        result(null, { id: id, ...customer });
         });
 };
 

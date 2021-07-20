@@ -12,12 +12,12 @@ router.get('/', customerController.findAllCustomers);
 router.get('/:customerId', customerController.findOneCustomer);
 
 // Update a Customer with customerId
-router.put('/customer/:customerId', customerController.updateCustomer);
+router.put('/:customerId', customerController.updateCustomer);
 
 // Delete a Customer with customerId
-router.delete('/customers/:customerId', customerController.deleteCustomer);
+router.delete('/:customerId', customerController.deleteCustomer);
 
 // Delete all customers
-router.delete('/customer', customerController.deleteAllCustomers);
+router.delete('/', customerController.deleteAllCustomers);
 
 module.exports = router;
